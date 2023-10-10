@@ -4,19 +4,28 @@
     box-sizing: border-box;
 }
 
+body {
+    background-image: url(../images/background2.png);
+    background-repeat: no-repeat;
+    background-color: var(--canvas-color);
+    background-size: cover;
+}
+
 :root {
     --canvas-color: #eeecde;
 }
 
 #canvas1 {
-    background: var(--canvas-color);
     position: absolute;
-    left: 0;
-    top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+    z-index: -1;
 }
 
-img {
-    max-width: 50%;
+#logo {
+    max-width: 35%;
     height: auto;
     position: relative;
     margin: 20px auto 0;
@@ -31,37 +40,33 @@ header {
 #controls {
     position: relative;
     display: block;
-    width: 40%;
-    max-width: 300px;
     padding: 10px;
+    z-index: 0;
 }
 
 .control1 {
-    top: 52%;
-    right: 80%;
-    transform: translateX(270px);
     position: inherit;
+    display: inline-block;
 }
 
 .control2 {
     position: inherit;
-    top: 100%;
-    right: 60%;
-    transform: translateX(270px);
+    display: inline-block;
 }
 
 .control3 {
     position: inherit;
-    top: 52%;
-    right: 20%;
-    transform: translateX(270px);
+}
+
+.control4 {
+    position: inherit;
 }
 
 input {
     accent-color: #156669;
 }
 
-span {
+label {
     color: #156669;
     font-size: 15px;
     display: flex;
