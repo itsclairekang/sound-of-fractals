@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>The Sound of Fractals</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="canvas1"></canvas>
+    <div id="header">
+        <div id="nav-right">
+
+        </div>
+    </div>
+    <div id="image">
+        <img src="../images/SoundOfFractals.png" alt="The Sound of Fractals">
+    </div>
+    <div id="controls">
+        <div class="control1">
+            <span for="numberOfSides">Number of Sides</span>
+            <input id="numberOfSides" type="range" min="1" max="10" step="1" value="3">
+        </div>
+        <div class="control2">
+            <span for="depth">Depth</span>
+            <input id="depth" type="range" min="1" max ="8" step="1" value="3">
+        </div>
+        <div class="control3">
+            <span for="spread">Spread</span>
+            <input id="spread" type="range" min="0.1" max="2.5" step="0.1" value="0.6">
+        </div>
+        <div class="control4">
+            <span for="branches">Branches</span>
+            <input id="branches" type="range" min="1" max="3" step="1" value="2">
+        </div>
+        
+    </div>
+    <script src="visual_render.js"></script>
+</body>
+</html>

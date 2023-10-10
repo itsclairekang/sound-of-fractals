@@ -1,0 +1,70 @@
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+:root {
+    --canvas-color: #eeecde;
+}
+
+#canvas1 {
+    background: var(--canvas-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+img {
+    max-width: 50%;
+    height: auto;
+    position: relative;
+    margin: 20px auto 0;
+    display: block;
+}
+
+header {
+    width: 40%;
+    max-width: 500px;
+}
+
+#controls {
+    position: relative;
+    display: block;
+    width: 40%;
+    max-width: 300px;
+    padding: 10px;
+}
+
+.control1 {
+    top: 52%;
+    right: 80%;
+    transform: translateX(270px);
+    position: inherit;
+}
+
+.control2 {
+    position: inherit;
+    top: 100%;
+    right: 60%;
+    transform: translateX(270px);
+}
+
+.control3 {
+    position: inherit;
+    top: 52%;
+    right: 20%;
+    transform: translateX(270px);
+}
+
+input {
+    accent-color: #156669;
+}
+
+span {
+    color: #156669;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    font-family: "Montserrat";
+}
