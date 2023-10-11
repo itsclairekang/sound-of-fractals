@@ -38,28 +38,51 @@ header {
 }
 
 #controls {
-    position: relative;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 10%;
     display: block;
     padding: 10px;
     z-index: 0;
 }
 
 .control1 {
-    position: inherit;
+    top: 13%;
+    right: 92%;
+    transform: translateX(125px);
+    position: absolute;
     display: inline-block;
 }
 
 .control2 {
-    position: inherit;
+    top: 52%;
+    right:100%;
+    transform: translateX(125px);
+    position: absolute;
     display: inline-block;
 }
 
 .control3 {
-    position: inherit;
+    top: 13%;
+    left: 90%;
+    transform: translateX(-125px);
+    position: absolute;
 }
 
 .control4 {
-    position: inherit;
+    top: 52%;
+    left: 100%;
+    transform: translateX(-125px);
+    position: absolute;
+}
+
+.control5 {
+    top: 85%;
+    left: 57%;
+    transform: translateX(-125px);
+    position: absolute;
 }
 
 input {
