@@ -79,7 +79,7 @@ header {
 }
 
 .control5 {
-    top: 85%;
+    top: 82%;
     left: 57%;
     transform: translateX(-125px);
     position: absolute;
@@ -95,4 +95,22 @@ label {
     display: flex;
     flex-direction: column;
     font-family: "Montserrat";
+}
+
+#listen {
+    position: absolute;
+    top: 87%;
+    border-radius: 35px;
+    bottom: 7%;
+    display: block; 
+    margin-left: 57%;
+    transform: translateX(-9rem);
+    border-color: transparent;
+    background-color: transparent;
+}
+
+#listenImage {
+    width: 100%;
+    max-width: 130px;
+
 }

@@ -1,8 +1,5 @@
-/*
-TODO: 
-1) Get the slider functionalities working
-2) Get the slider positions to be correct 
-*/
+import music from './music.js';
+
 function sizeScale(width, height) {
     return Math.ceil((height/width) * 100) + "%";
 }
@@ -33,6 +30,15 @@ function sizeScale(width, height) {
         let branches = 3;
         let color = 345;
         let hslColor = 'hsl(' + color + ', 80%, 70%)';
+
+        const playButton = document.getElementById('listen');
+        console.log(Tone.context.state);
+        playButton.addEventListener('click', () => {
+            if (Tone.context.state != "running") {
+                Tone.start();
+            }
+            music().playNote();
+        });
         
         //controls
         const sidesRange = document.getElementById('numberOfSides');
@@ -65,8 +71,8 @@ function sizeScale(width, height) {
             hslColor = 'hsl(' + color + ', 80%, 70%)';
             drawFractal();
         });
-    
-        function drawBranch(layers) {
+
+        function drawSide(layers) {
             if(layers == 0) return;
             ctx.beginPath();
             ctx.moveTo(0, 0);
@@ -79,12 +85,12 @@ function sizeScale(width, height) {
 
                 ctx.save();
                 ctx.rotate(spread);
-                drawBranch(layers - 1);
+                drawSide(layers - 1);
                 ctx.restore();
     
                 ctx.save();
                 ctx.rotate(-spread);
-                drawBranch(layers - 1);
+                drawSide(layers - 1);
                 ctx.restore();
                 
                 ctx.restore();
@@ -98,7 +104,7 @@ function sizeScale(width, height) {
             ctx.translate(canvas.width/2, canvas.height/2);
             for(let i = 0; i < sides; i++) {
                 ctx.rotate((Math.PI * 2)/sides);
-                drawBranch(layers);
+                drawSide(layers);
             }
             ctx.restore();
         }
