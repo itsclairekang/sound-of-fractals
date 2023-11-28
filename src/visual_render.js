@@ -4,7 +4,7 @@ function sizeScale(width, height) {
     return Math.ceil((height/width) * 100) + "%";
 }
 
-['load', 'resize'].forEach(function(e) {
+['load'].forEach(function(e) {
     window.addEventListener(e, function() {
         const canvas = document.getElementById('canvas1');
         const ctx = canvas.getContext('2d');
@@ -24,22 +24,40 @@ function sizeScale(width, height) {
         //effect settings
         let size = canvas.width < canvas.height ? canvas.width * 0.25 : canvas.height * 0.25;
         let sides = 5;
-        let layers = 3;
+        let layers = "3";
         let scale = 0.5;
         let spread = 0.5; // 0.1 - 2.5
-        let branches = 3;
+        let branches = 2;
         let color = 345;
         let hslColor = 'hsl(' + color + ', 80%, 70%)';
+        let currentMusic;
+        let isMuted = false;
+
+        const muteButton = document.getElementById("mute");
+        muteButton.addEventListener('click', () => {
+            if(!currentMusic) {
+                return;
+            }
+            isMuted = !isMuted;
+            if(isMuted) {
+                document.getElementById("audioImage").src="../images/speaker_mute.png";
+                currentMusic.muteIt();
+            } else {
+                document.getElementById("audioImage").src="../images/speaker_sound.png";
+                currentMusic.unmuteIt();
+            }
+        });
 
         const playButton = document.getElementById('listen');
-        console.log(Tone.context.state);
         playButton.addEventListener('click', () => {
             if (Tone.context.state != "running") {
                 Tone.start();
             }
-            music().playNote();
+            currentMusic = music(sides, layers, spread, branches, color);
+            currentMusic.startSong();
+
         });
-        
+
         //controls
         const sidesRange = document.getElementById('numberOfSides');
         sidesRange.addEventListener('change', function(f) {
