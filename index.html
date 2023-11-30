@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js" 
+        integrity="sha512-Siyxh4gyNM5SaERNa9BOZSPcu/auHyFUWn9OVFD7MxI3/dVPQklE7tfqS+pLmPHF1zo6UdDaJAp/thihrf0c7w==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"
+    ></script>
+    <script type="text/javascript" src="../src/Tonejs-Instruments.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>The Sound of Fractals</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header">
+        <div id="nav-right">
+            <button id="mute">
+                <img id="audioImage" src="../images/speaker_sound.png"/>
+            </button>
+        </div>
+    </div>
+    <div id="image">
+        <img id="logo" src="/images/SoundOfFractals.png" alt="The Sound of Fractals">
+    </div>
+    <canvas id="canvas1"></canvas>
+
+    <div id="controls">
+        <div class="control1">
+            <label for="numberOfSides">Number of Sides</label>
+            <input id="numberOfSides" type="range" min="1" max="12" step="1" value="5">
+        </div>
+        <div class="control2">
+            <label for="depth">Depth</label>
+            <input id="depth" type="range" min="1" max ="6" step="1" value="3">
+        </div>
+        <div class="control3">
+            <label for="spread">Spread</label>
+            <input id="spread" type="range" min="0.1" max="2.5" step="0.05" value="0.5">
+        </div>
+        <div class="control4">
+            <label for="branches">Branches</label>
+            <input id="branches" type="range" min="1" max="3" step="1" value="2">
+        </div>
+        <div class="control5">
+            <label for="color">Color</label>
+            <input id="color" type="range" min="0" max="360" step="1" value="345">
+        </div>
+    </div>
+    <button id="listen">
+        <img id= "listenImage" src="/images/Listen.png"/>
+    </button>
+    <script type="module" src="/src/visual_render.js"></script>
+    <script scr="/src/music.js"></script>
+</body>
+</html>
