@@ -48,7 +48,9 @@ const MINOR_SCALE = [0, 2, 3, 5, 7, 8, 10, 12];
  * Axiom and rules derived from Worth and Stepney's context-sensitive
  * stochastic L-system. 
  */
+const AXIOM1 = 'F++F---F'
 const AXIOM2 = 'F++F++F+++F---F--F--F'
+const AXIOM3 = 'F--F+++F++F--F-F+F---F+++F--F+F'
 const RULES = new Map([
     ['[dFF]', 'F'], //Repetition
     ['[d-F+F]', 'F'], // Appoggiatura
@@ -118,13 +120,13 @@ function makeScale(majorOrMinor, keyNameAndOctave) {
 }
 
 function lSystemGenerator(axiom, rules, iterations) {
-    console.log("iterations = " + iterations)
+    // console.log("iterations = " + iterations)
     let result = axiom;
 
     for (let i = 0; i <= iterations; i++) {
         result = applyRules(result, rules);
     }
-    console.log("final sequence = " + result);
+    // console.log("final sequence = " + result);
     return result;
 }
 
@@ -270,6 +272,16 @@ function setInitialDuration(spread) {
     }
 }
 
+function setAxiom(branches) {
+    if(branches == 1) {
+        return AXIOM1;
+    } else if (branches == 2) {
+        return AXIOM2;
+    } else {
+        return AXIOM3;
+    }
+}
+
 class Music {
     constructor(sides, layers, spread, branches, color) {
         this.iterations = layers + 1; // could change to layers, but need to see how larger iterations look 
@@ -277,7 +289,8 @@ class Music {
         this.keyName = setScale(sides); // scale root note e.g D
         this.major = color % 2 == 0 ? "major" : "minor"; // major or natural minor scale
         this.scaleNotes = makeScale(this.major, this.keyName); // scaleNotes with durations
-        this.lSystemSequence = lSystemGenerator(AXIOM2, RULES, Number(this.iterations));
+        this.axiom = setAxiom(branches);
+        this.lSystemSequence = lSystemGenerator(this.axiom, RULES, Number(this.iterations));
         this.noteQueue = interpretLSystem(this.lSystemSequence, this.scaleNotes[15], this.initialDuration, this.scaleNotes); 
         this.isMuted = false;
     }
