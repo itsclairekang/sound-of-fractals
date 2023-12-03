@@ -104,7 +104,6 @@ function makeScale(majorOrMinor, keyNameAndOctave) {
 
     var startingNote = noteNameToMIDI(keyNameAndOctave);
     var myScaleFormula = (majorOrMinor == "major") ? expandScalePattern(MAJOR_SCALE, 4) : expandScalePattern(MINOR_SCALE, 4);
-    // console.log(myScaleFormula);
     var myNoteQueue = [];
     for(var i=0; i < myScaleFormula.length; i++) {
         if(MIDI_SHARP_NAMES[myScaleFormula[i] + startingNote].includes(ALPHA_NAMES[(offset+i) % ALPHA_NAMES.length])) {
@@ -115,18 +114,15 @@ function makeScale(majorOrMinor, keyNameAndOctave) {
             console.log("ERROR");
         }
     }
-    console.log("scale = " + myNoteQueue);
     return myNoteQueue;
 }
 
 function lSystemGenerator(axiom, rules, iterations) {
-    // console.log("iterations = " + iterations)
     let result = axiom;
 
     for (let i = 0; i <= iterations; i++) {
         result = applyRules(result, rules);
     }
-    // console.log("final sequence = " + result);
     return result;
 }
 
@@ -224,7 +220,7 @@ function interpretLSystem(lSystemSequence, startingNote, initialDuration, scale)
                 break;
 
             case '[':
-                // Push current state and set note duration to 0
+                // Push current state and set note duration to 
                 stack.push({ note: currentNote, duration: currentDuration });
                 currentDuration = initialDuration;
                 break;
@@ -284,7 +280,7 @@ function setAxiom(branches) {
 
 class Music {
     constructor(sides, layers, spread, branches, color) {
-        this.iterations = layers + 1; // could change to layers, but need to see how larger iterations look 
+        this.iterations = layers + 1; 
         this.initialDuration = setInitialDuration(spread);
         this.keyName = setScale(sides); // scale root note e.g D
         this.major = color % 2 == 0 ? "major" : "minor"; // major or natural minor scale
@@ -312,7 +308,6 @@ class Music {
 
     startSong() {
         this.stopIt();
-        console.log(this.noteQueue);
         var synth = SampleLibrary.load({
             instruments: ["piano", 'guitar-acoustic', 'xylophone'],
             baseUrl: "../src/samples/"
