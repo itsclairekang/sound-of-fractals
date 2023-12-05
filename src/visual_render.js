@@ -54,6 +54,7 @@ function sizeScale(width, height) {
                 Tone.start();
             }
             currentMusic = music(sides, layers, spread, branches, color);
+            document.getElementById("audioImage").src="../images/speaker_sound.png";
             currentMusic.startSong();
 
         });
